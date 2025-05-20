@@ -1,0 +1,5 @@
+{
+  "name": "Interactive Video Showcase",
+  "description": "A web application to display video previews in an animated and interactive sphere or grid layout, inspired by TV channel program showcases.",
+  "requestFramePermissions": []
+}

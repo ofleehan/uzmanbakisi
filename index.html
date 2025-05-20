@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Video Showcase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overscroll-behavior: none; /* Prevents pull-to-refresh on touch devices affecting drag */
+    }
+    .sphere-container {
+      transform-style: preserve-3d;
+      /* transition: transform 0.1s linear; Ensure smooth updates, but might be overridden by direct style updates */
+    }
+    .video-card-sphere {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      backface-visibility: hidden; /* Improves performance and appearance */
+      transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* For any potential future animated transitions */
+    }
+     /* Custom scrollbar for webkit browsers */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #2d3748; /* dark-gray-800 */
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4a5568; /* dark-gray-600 */
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #718096; /* dark-gray-500 */
+    }
+    .text-xxs { /* Ensure very small text is available if not in default Tailwind */
+        font-size: 0.625rem; /* 10px */
+        line-height: 0.875rem; /* 14px */
+    }
+
+    /* Phoenix Rising Animation */
+    @keyframes phoenixRise {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.5);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .animate-phoenix-rise {
+      animation: phoenixRise 1.5s ease-out forwards;
+      animation-delay: 0.5s; /* Delay before animation starts */
+      opacity: 0; /* Start hidden, animation will make it visible */
+      transform-origin: center; /* Ensures scaling is from the center */
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/"
+  }
+}
+</script>
+</head>
+<body class="bg-gray-900 text-white overflow-hidden h-screen">
+  <div id="root" class="h-full w-full"></div>
+  <script type="module" src="./index.tsx"></script>
+</body>
+</html><link rel="stylesheet" href="index.css">
+<script src="index.tsx" type="module"></script>
